@@ -1,0 +1,4 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+
+Scanner input = new Scanner(System.in);

@@ -1,0 +1,56 @@
+import java.util.*;
+import java.io.PrintStream;
+import type.lib.*;
+
+public class Check12B
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter item number ... ");
+		String itemNo = input.nextLine();
+		AbstractFoods at = AbstractFoods.getRandom();
+		Map<String, Item> list = at.getInventory();
+		Map<String, Contact> kontakt = at.getContacts();
+		
+		Item desig = list.get(itemNo);
+		if (desig == null)
+		{
+			output.println("No such item!");
+		}
+		else
+		{
+			output.println("Item Details:");
+			output.println("Description\t" + desig.getName());
+			output.println("Qty in stock:\t" + desig.getStock());
+			output.println("Sale Price:\t" + desig.getUnitPrice());
+			output.println("Sold Quantity:\t" + desig.getSoldQty());
+			String sales = String.format("%.2f", desig.getSales());
+			output.println("Sales [in $]:\t" + sales);
+			
+			Set<String> sk = kontakt.keySet();
+			for (String kon : sk)
+			{
+				Contact ge = kontakt.get(kon);
+				if (ge instanceof Supplier)
+				{
+					Supplier supply = (Supplier) ge;
+					Map<Item, Double> supp = supply.getCatalog();
+					Set<Item> skt = supp.keySet();
+					for (Item pt : skt)
+					{
+						if (desig.equals(skt))
+						{
+							output.println("Supplier:\t" + supply.getName());
+						}
+					}
+				
+					
+					
+				}
+			}
+		}
+	}
+}

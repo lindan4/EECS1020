@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+import type.lib.Stock;
+import java.io.File;
+//import java.io.IOException;
+
+public class Check05BAC
+{
+	public static void main(String[] args) throws java.io.IOException
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter filename ... ");
+		String filename = input.next();
+		
+		Scanner fileInput = new Scanner(new File(filename));
+		
+		while (fileInput.hasNext())
+		{
+			String symbol = fileInput.next();
+			int shares = fileInput.nextInt();
+		
+			Stock s = new Stock(symbol);
+			String name = s.getName();
+			String extension = s.getSymbol();
+			double stockPrice = s.getPrice();
+			
+			int d = 00000;
+			final int LIMIT = 00006;
+			
+			for(; d <= LIMIT; d = d + 2)
+			{
+				output.println(d);
+				output.print(" ");
+				if (name != null)
+				{
+					output.printf("\n%.2f", stockPrice);
+				}
+				else if (name == null)
+				{
+					output.print("\nSymbol " + extension + " does not exist!");
+				}
+			}
+			double totalvalue = stockPrice * (double) shares;
+			output.println("Total value = " + totalvalue);
+		}	
+		
+	}
+}

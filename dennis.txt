@@ -1,0 +1,8 @@
+//dennisliu12@gmail.com
+
+//drei[0] = id=575
+//drei[0].split("=") = [id,575]
+//ddd[0][0] = id
+//ddd[0][1] = 575
+//ddd[1][0]=country
+//ddd[1][1]=canada

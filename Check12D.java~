@@ -1,0 +1,76 @@
+import java.util.*;
+import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
+import type.lib.*;
+
+public class Check12D
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Generate report for the month [1,12] ... ");
+		String month = input.nextLine();
+		
+		SimpleDateFormat form = new SimpleDateFormat("MM");
+		DecimalFormat decF = new DecimalFormat("###,###,###,###.##");
+		AbstractFoods af = AbstractFoods.getRandom();
+		
+		//Set<Double> iten = new HashSet<Double>();
+		
+		final double HUNDRED = 100;
+		
+		double oldTotal = 0;
+		double newTotal = 0;
+		
+		List<Trx> trans = af.getJournal();
+		Map<Trx, Double> itemNa = new HashMap<Trx, Double>();
+		TreeSet<Double> organizedAmts = new TreeSet<Double>();
+
+		for (Trx action : trans)
+		{
+			Date time = action.getDate();
+			String onlyMonth = form.format(time);
+			if (month.equals(onlyMonth))
+			{
+				double amtTrans = action.getAmount();
+				itemNa.put(action, amtTrans);
+
+				newTotal = oldTotal + amtTrans;
+				oldTotal = newTotal;
+			}
+		}
+		
+		if (newTotal <= 0)
+		{
+			output.println("No sales activities in this month.");
+		}
+		else
+		{
+			Set<Trx> keys = itemNa.keySet();
+			for (Trx savedTrans : keys)
+			{
+				Item specific = savedTrans.getItem();
+				String itName = specific.getName();
+				double transAmt = itemNa.get(savedTrans);
+				organizedAmts.add(transAmt);
+				
+				String prisFormat = String.format("%.2f", transAmt);
+				
+				double totalSalesAvg = (transAmt / newTotal) * HUNDRED;
+				String salesAvgForm = String.format("%.2f", totalSalesAvg);
+				output.println(prisFormat + "\t\t" + salesAvgForm + "%\t" + itName);
+			}
+			String newTotalForm = decF.format(newTotal);
+			output.println("----------\n" + newTotalForm);
+			double lasta = organizedAmts.last();
+			
+			String forma = String.format("%.2f", lasta);
+			output.println("==========\n" + forma);
+		
+		}
+
+	}
+}

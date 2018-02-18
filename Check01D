@@ -1,0 +1,13 @@
+public class Check01D
+
+{
+	public static void main(String[] args)
+	{
+	double z = 1.0 - 'A' / 2.0 + 1.0 % 2.0;
+	double y = 2.0 - z * z / 2.0
+	double x = 1.0 - 'A' / 2.0 + 1.0 % 2.0
+	
+	System.out.println("The value of x is:";
+	System.out.println("%.2f", x);
+	}
+}

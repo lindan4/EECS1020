@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+import java.lang.String;
+
+public class Check06C
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+	
+		String se = input.nextLine();
+		String regex = "[a-z[A-z]]";
+		
+		int index = 0;
+		char firstOccurence = se.charAt(index);
+		String b = "" + firstOccurence;
+		int firstIndex = se.indexOf(firstOccurence);
+		int lastIndex = se.lastIndexOf(firstOccurence);
+		String newString = se.subString(firstIndex, lastIndex);
+		int stringLength = newString.length();
+		output.print("" + stringLength + firstOccurence);
+			
+
+	}
+}
+		
+		
+		
+		
+// Goal: replace repetitions of letters with the nummber of repetitions and the numer next to it
+// 1. Use regex to allow only letter inputs
+// 2. Once it passes that, identify the first occurence letter of a run 
+// 2. Find last occurence letter of the run, create a substring and determine its length
+
+		
+		
+

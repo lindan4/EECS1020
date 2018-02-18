@@ -1,0 +1,14 @@
+import java.util.*;
+import java.io.PrintStream;
+
+public class Check11B
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Entry ... ");
+		String inp = input.nextLine();
+		
+		

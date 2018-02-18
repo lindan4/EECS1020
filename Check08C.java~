@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+import type.lib.Student;
+import java.util.Iterator;
+
+public class Check08C
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter the year ... ");
+		int ohr = input.nextInt();
+		
+		Student stu = new Student() .getRandom();
+		String name = stu.getName();
+		String aidi = stu.getID();
+		double gpa = stu.getGpa();
+		String gpaf = String.format("%.1f", gpa);
+		
+		output.println("Student Name: " + name);
+		output.println("Student ID:   " + aidi);
+		output.println("Student GPA   " + gpaf);
+		output.println("-------------------------");
+		
+		output.println("-------------------------");
+	}	
+}

@@ -1,0 +1,18 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+import java.lang.Math;
+
+public class BAMI
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter weight in lbs. ");
+		double weight = input.nextDouble();
+		
+		output.print("Enter height in ft'in. ");
+		String height = input.nextLine();
+	}
+}

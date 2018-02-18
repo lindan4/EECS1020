@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.io.PrintStream;
+import java.lang.Character;
+import java.lang.String;
+
+public class CharUndFor
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter a character: ");
+		
+		final int SENTINEL = -1;
+		
+		int character;
+		
+		for (character = input.nextInt(); character != SENTINEL; character = input.nextInt())
+		{
+			if (character == input.nextInt())
+			{
+				String s = new String(character);
+				int value = s.charAt(0);
+			}
+			else
+			{
+				
+			}
+		}
+		output.print("The character value of " + s + " is " + value); 
+	}
+}

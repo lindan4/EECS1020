@@ -1,0 +1,46 @@
+//Issue: need to find difference between years
+
+import java.util.Scanner;
+import java.io.PrintStream;
+import type.lib.CreditCard;
+import type.lib.GlobalCredit;
+import java.util.Date;
+import java.util.StringTokenizer;
+import java.text.SimpleDateFormat;
+
+public class Check08A
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		output.print("Enter report range in years ... ");
+		int range = input.nextInt();
+		
+		final String delim = "/";
+		SimpleDateFormat eur = new SimpleDateFormat("dd/MM/yyyy");
+		
+		GlobalCredit neu = new GlobalCredit().getRandom();
+		
+		output.println("Cards expiring before " + range + " years from now:");
+		for (CreditCard cre : neu)
+		{
+			String nummer = cre.getNumber();
+			Date present = cre.getIssueDate();
+			Date expiry = cre.getExpiryDate();
+			
+			int comp = expiry.compareTo(present);
+			
+			
+			String issueForm = eur.format(present);
+			
+			
+			String expiryForm = eur.format(expiry);
+			
+			output.println(nummer + "\t" + issueForm + "\t" + expiryForm + "\t" + comp);
+		}
+	}
+}
+			
+			

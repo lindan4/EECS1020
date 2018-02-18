@@ -1,0 +1,13 @@
+while (s.getName() != null)
+			{
+				double stockPrice = s.getPrice();
+
+				for (double d = 00000; d < LIMIT; d = d + 2)
+				{
+					output.print(d);
+					output.print(" ");
+					output.println(stockPrice);
+				}
+				
+			double totalValue = stockPrice * shares;
+			output.println("Total value = " + totalValue);

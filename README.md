@@ -1,0 +1,1 @@
+Consists of files made for EECS 1020 exercises

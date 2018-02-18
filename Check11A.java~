@@ -1,0 +1,60 @@
+import java.util.*;
+import java.util.StringTokenizer;
+import java.io.PrintStream;
+import java.lang.*;
+import type.lib.ToolBox;
+
+//Only use exception handling
+
+public class Check11A
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		final int TWELVE = 12;
+		final int SIXTY = 60;
+		final String DAY = "00AM12PM";
+		
+		output.print("Enter h:m:AM or PM > ");
+		String data = input.nextLine();
+		try
+		{
+			StringTokenizer st = new StringTokenizer(data, ":");
+			String h = st.nextToken();
+			String m = st.nextToken();
+			String apm = st.nextToken().toUpperCase();
+			
+			
+			int hour = Integer.parseInt(h);
+			ToolBox.crash(hour <= 0 || hour > TWELVE, "");  
+			int hh = hour % TWELVE;
+			int min = Integer.parseInt(m);
+			ToolBox.crash(min < 0 || min >= SIXTY, "");
+			
+			int indexOfDay = DAY.indexOf(apm);
+			String extrNumbers = DAY.substring(indexOfDay-2, indexOfDay);
+			int a = Integer.parseInt(extrNumbers);
+			int computation = SIXTY * (hh + a) + min;
+			output.println(computation);
+	
+		}
+		catch (NoSuchElementException e)
+		{
+			output.println("Missing colon!");
+		}
+		catch (NumberFormatException e)
+		{
+			output.println("Non-numeric Data!");
+		}
+		catch (RuntimeException e)
+		{
+			output.println("Values out of range!");
+		}
+		
+	}
+}
+	
+// 60 * (h + a)  + m
+		

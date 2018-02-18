@@ -1,0 +1,12 @@
+import java.util.*;
+import java.io.PrintStream;
+import type.lib.Fraction;
+
+public class Kolle
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		PrintStream output = new PrintStream(System.out);
+		
+		
